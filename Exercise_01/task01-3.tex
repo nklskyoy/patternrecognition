@@ -1,0 +1,97 @@
+
+\subsection*{task 1.3 [10 points] \\[1ex] implementing the QR algorithm}
+
+Given the matrix $\mat{C}$ as computed in task 1.1, implement the following iterative procedure
+
+\vspace{1ex}
+
+\hrule
+\begin{algorithmic}
+\State $\mat{C}_0 = \mat{C}$
+\State
+\For{$t = 1, \ldots, 10$}
+\State
+\State compute the QR decomposition of $\mat{C}_{t-1}$ to obtain matrices $\mat{Q}_t$ and $\mat{R}_t$
+\State
+\State given matrices $\mat{Q}_t$ and $\mat{R}_t$, compute
+\begin{equation*}
+\mat{C}_t = \mat{R}_t \mat{Q}_t
+\end{equation*} 
+\EndFor
+\end{algorithmic}
+\hrule
+\vspace{1ex}
+%%%%%
+%%%%%
+%%%%% enter your code into the following environment
+%%%%%
+%%%%%
+\begin{python}
+# past your code here
+
+
+\end{python}
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\vfill
+
+Run your code and have a look at the diagonal entries of the resulting matrix $\mat{C}_{10}$. Compare them against the spectra you computed above; what do you observe ?
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+enter your discussion here \ldots
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+\vspace{2cm}
+
+Now, consider the following equivalencies
+\begin{equation*}
+\mat{C}_t = \mat{R}_t \mat{Q}_t = \inv{\mat{Q}_t} \mat{Q}_t \mat{R}_t \mat{Q}_t = \mat{Q}_t^{-1} \mat{C}_{t-1} \mat{Q}_t = \trn{\mat{Q}_t} \mat{C}_{t-1} \mat{Q}_t 
+\end{equation*}
+Can you use this insight to explain the result you get form running the QR algorithm ?
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+enter your discussion here \ldots
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+\newpage
+
+
+
+\subsection*{bonus [5 points]}
+
+If you want to impress your instructors, perform run-time measurements for your implementation of the QR algorithm as well.
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+enter your discussion here \ldots
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+
+
+

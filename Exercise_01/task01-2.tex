@@ -1,0 +1,60 @@
+
+\subsection*{task 1.2 [10 points] \\[1ex] timing spectral- and singular value decompositions}
+
+Proceed just as above, but now measure the (average) run-time of the methods \keyword{la.eig}, \keyword{la.eigh}, and \keyword{la.svd}.
+
+Here, it is highly recommended you make use of Python's \keyword{timeit} module. Examples for its proper use can be found in 
+\begin{itemize}
+\item[] C. Bauckhage, \href{https://www.researchgate.net/publication/329449786_NumPy_SciPy_Recipes_for_Image_Processing_Avoiding_for_Loops_over_Pixel_Coordinates}{\textbf{``NumPy / SciPy Recipes for Image Processing: Avoiding for Loops over Pixel Coordinates''}}, technical report, 2018 
+\end{itemize}
+
+Make sure that your run-time comparisons are fair! In other words, pay attention to the fact that \keyword{la.eig} and \keyword{la.eigh} require to compute matrix $\mat{C}$ from $\mat{X}$ whereas \keyword{la.svd} works directly on $\mat{X}$.
+%%%%%
+%%%%%
+%%%%% enter your code into the following environment
+%%%%%
+%%%%%
+\begin{python}
+from timeit import timeit
+n = 100
+eig_time = timeit(lambda: la.eig(X @ X.T), number=n)
+eigh_time = timeit(lambda: la.eigh(X @ X.T), number=n)
+svd_time = timeit(lambda: la.svd(X)[1] ** 2, number=n)
+# print the average time spend for each method
+print("la.eig:  %.3fs" % eig_time / n)
+print("la.eigh: %.3fs" % eigh_time / n)
+print("la.svd:  %.3fs" % svd_time / n)
+\end{python}
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\vspace{2cm}
+Run your code. What do you observe ? Do your result so far suggest any preference for any of the methods considered up to this point ?
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+The code outputs the following:
+
+la.eig:  0.090s \\
+la.eigh: 0.024s \\
+la.svd:  0.909s \\
+
+We see that singular value decomposition is by far the slowest method. This observation can be explained by the dimensions of the matrix $X$ ($361 \times 2429$) in comparison to $C$ ($361 \times 361$). 
+
+The fastest method is \keyword{la.eigh}. Reason for this is that \keyword{la.eigh} assumes the input matrix to be symmetric/hermitian and thus can use a faster algorithm than \keyword{la.eig}. On the other hand \keyword{la.eig} doesn't assume anything on the input matrix other than it being square.
+
+Together with the observations from exercise 1, the prefered method for this specific problem instance is \keyword{la.eigh} for the already mentioned reasons.
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+\newpage
+
+
