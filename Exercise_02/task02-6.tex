@@ -1,0 +1,136 @@
+
+\subsection*{task 2.6 [10 points] \\[1ex] the QR algorithm can sort!}
+
+In task 1.3, you already implemented the QR algorithm and used it to compute the eigenvalues of a sample covariance matrix. Yet, amazingly (?), the QR algorithm can do much more \ldots
+
+To see an example, implement the following procedure in Numpy / Scipy
+
+
+\begin{enumerate}
+\item Assume you were given a vector
+\begin{equation*}
+\vec{x} = \trn{[x_1, x_2, x_3, \ldots, x_n]}
+\end{equation*}
+consisting of $n$ elements $x_i \in \mathbb{R}$
+\begin{python}
+# get the dimension of the input vector
+n = x.shape[0]
+\end{python}
+
+\item Create an $n \times n$ tri-diagonal matrix $\mat{X}$ whose main diagonal contains the elements of $\vec{x}$ and whose off diagonals contain a fixed small number $\epsilon$. In other words, create a matrix like this
+\begin{equation*}
+\mat{X} = 
+\begin{bmatrix}
+     x_1 & \epsilon \\
+\epsilon &      x_2 & \epsilon \\
+         & \epsilon &      x_3 & \epsilon \\
+         &          &          &   \ddots & \epsilon \\ 
+         &          &          & \epsilon &      x_n
+\end{bmatrix}
+\end{equation*}
+\begin{python}
+# build the tri-diagonal matrix with the vector x on the main
+# diagonal and eps on both off-diagonals
+off_diag = [eps] * (n-1)
+X = np.diag(x) + np.diag(off_diag, k=1) + np.diag(off_diag, k=-1)
+\end{python}
+
+\item compute 
+\begin{equation*}
+\mat{X}' = \exp \bigl( \mat{X} \bigr)
+\end{equation*}
+\begin{python}
+# compute the matrix exponential
+X_prime = la.expm(X)
+\end{python}
+
+\item feed $\mat{X}'$ into the QR algorithm to obtain a matrix
+\begin{equation*}
+\mat{Y}' = \operatorname*{qrAlgorithm} \bigl( \mat{X}' \bigr)
+\end{equation*}
+\begin{python}
+# apply the qr-algorithm
+Y_prime = qr_alg(X_prime, **kwargs)
+\end{python}
+
+\item compute 
+\begin{equation*}
+\mat{Y} = \log \bigl( \mat{Y}' \bigr)
+\end{equation*}
+\begin{python}
+# compute the matrix logarithm
+Y = la.logm(Y_prime)
+\end{python}
+\end{enumerate}
+
+\textbf{NOTE:} In this task, we write $\exp(\cdot)$ and $\log(\cdot)$ to denote the matrix exponential- and logarithm functions. Scipy provides them as \keyword{la.expm} and \keyword{la.logm}.
+
+In order to work with a specific example, run you code with the following input and parameter
+\begin{align*}
+\vec{x}  & = \trn{[ 4, -3, 2, 7, 12, 1 ]} \\
+\epsilon & = 0.0001
+\end{align*}
+
+Run your code four times using $t_{\text{max}} \in \{ 1, 5, 10, 50 \}$ iterations for the QR algorithm in step 4. After each run, print the diagonal entries of the matrix $\mat{Y}$ you obtain in step 5. What do you observe ?
+
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+
+Just for completeness we insert the full code here:
+
+\color{black}
+\begin{python}
+def qr_alg(A:np.ndarray, k:int =10) -> np.ndarray:
+    # iterate for k iterations
+    for _ in range(k):
+        # decompose and build next matrix
+        Q, R = la.qr(A)
+        A = R @ Q
+    # return last
+    return A
+def qr_sort(x:np.ndarray, eps:float =1e-4, **kwargs) -> np.ndarray:
+    # get the dimension of the input vector
+    n = x.shape[0]
+    # build the tri-diagonal matrix with the vector x on the main
+    # diagonal and eps on both off-diagonals
+    off_diag = [eps] * (n-1)
+    X = np.diag(x) + np.diag(off_diag, k=1) + np.diag(off_diag, k=-1)
+    # compute the matrix exponential
+    X_prime = la.expm(X)
+    # apply the qr-algorithm
+    Y_prime = qr_alg(X_prime, **kwargs)
+    # compute the matrix logarithm
+    Y = la.logm(Y_prime)
+    # return the diagonal entries
+    return np.diag(Y)
+# create some sample input
+x = np.asarray([4, -3, 2, 7, 12, 1], dtype=np.float32)
+# apply for different iterations of the qr algorithm
+for k in [1, 5, 10, 50]:
+    sorted_x = qr_sort(x, k=k)
+    sorted_x = np.rint(sorted_x)
+    print("k=%i:\t" % k, sorted_x)
+\end{python}
+\color{blue}
+
+The output looks as follows:
+
+$k=k:  [ 4, -3,  2,  7, 12,  1]$ \\
+$k=5:  [ 4, 12,  7,  2, -3,  1]$ \\
+$k=10: [12,  4,  7,  2, -3,  1]$ \\
+$k=50: [12,  7,  4,  2,  1, -3]$
+
+One can observe that with increasing number of iterations of the QR algorithm, the output is being sorted better and better.
+
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+
+

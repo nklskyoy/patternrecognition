@@ -1,0 +1,68 @@
+
+\subsection*{task 2.2 [5 points] \\[1ex] the quaternion group $Q_8$}
+
+\textbf{NOTE:} If you decide to give this task a try, then once again really try to solve it yourself!
+
+Recall that any complex number $z \in \mathbb{C}$ can be written as $z = a \cdot 1 + b \cdot i$ where $1, a, b \in \mathbb{R}$ and $i = \sqrt{-1}$. 
+
+Also recall that complex numbers can be thought of as living in a 2D space called the complex plane.
+
+In 1843, Hamilton famously extended the idea of complex numbers to 4D and introduced the \emph{quaternions} $q \in \mathbb{H}$ where
+\begin{equation*}
+q = a \cdot 1 + b \cdot i + c \cdot j + d \cdot k
+\end{equation*}
+Here, $a, b, c, d \in \mathbb{R}$ and the \emph{unit quaternions} $i, j, k$ are defined by their properties / multiplication rules
+\begin{align*}
+i^2 & = -1 & j^2 & = -1 & k^2 & = -1 & ijk & = -1 \\[1ex]
+ij & = k & jk & = i & ki & = j \\
+ji & = -k & kj & = -i & ik & = -j
+\end{align*}
+
+Given this information, complete the Cayley table for this group:
+%%%%%
+%%%%%
+%%%%% complete the following table, i.e. replace the \ldots with the appropriate expression
+%%%%%
+%%%%%
+\begin{center}
+  \begin{tabular}{>{\columncolor[gray]{0.8}}ccccccccc}
+  \rowcolor[gray]{0.8} $\cdot$ & $+1$ & $-1$ & $+i$ & $-i$ & $+j$ & $-j$ & $+k$ & $-k$ \\
+  $+1$  & $+1$ & $-1$ & $+i$ & $-i$ & $+j$ & $-j$ & $+k$ & $-k$ \\
+  $-1$  & $-1$ & $+1$ & $-i$ & $+i$ & $-j$ & $+j$ & $-k$ & $+k$ \\
+  $+i$  & $+i$ & $-i$ & $-1$ & $+1$ & $+k$ & $-k$ & $-j$ & $+j$ \\
+  $-i$  & $-i$ & $+i$ & $+1$ & $+1$ & $-k$ & $+k$ & $+j$ & $-j$ \\
+  $+j$  & $+j$ & $-j$ & $-k$ & $+k$ & $-1$ & $+1$ & $+i$ & $-i$ \\ 
+  $-j$  & $-j$ & $+j$ & $+k$ & $-k$ & $+1$ & $+1$ & $-i$ & $+i$ \\
+  $+k$  & $+k$ & $-k$ & $+j$ & $-j$ & $-i$ & $+i$ & $-1$ & $+1$ \\ 
+  $-k$  & $-k$ & $+k$ & $-j$ & $+j$ & $+i$ & $-i$ & $+1$ & $+1$ 
+  \end{tabular}
+\end{center}
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\vspace{1ex}
+
+Does your result ($\Leftrightarrow$ the structure of the completed table) suggest that $Q_8$ is an Abelian group or not ?
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+The Caylay table is again not symmetric and thus the group $(H, \cdot)$ is not abelian. This can also directly be seen by the somewhat skew-symmetric relationship between unit quaternions, i.e.
+$$ ik = -j = (-1) \cdot j = (-1) \cdot ki = -ki $$
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+\newpage
+
+
+
+
+
+
