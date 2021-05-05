@@ -1,0 +1,127 @@
+
+\subsection*{task 2.3 [5 points] \\[1ex] complex numbers as matrices}
+
+Python has an in-built data type for complex numbers. For instance, the two numbers $z_1 = 3 \cdot 1 + 4 \cdot i$
+and $z_2 = 2 \cdot 1 - 2 \cdot i$
+%\begin{align*}
+%z_1 & = 3 \cdot 1 + 4 \cdot i \\
+%z_2 & = 2 \cdot 1 - 2 \cdot i
+%\end{align*}
+can be implemented as
+\begin{python}
+z1 = complex(3, +4)
+z2 = complex(2, -2)
+\end{python}
+or simply as
+\begin{python}
+z1 = 3 + 4j
+z2 = 2 - 2j
+\end{python}
+\textbf{NOTE:} For people other than electrical engineers, it may be confusing that Python refers to the imaginary unit $i$ as \texttt{j}. But it is how it is.
+
+Here is your \emph{first sub-task}: using Python, compute the values of the four simple expressions $z_1 + z_2$, $z_1 \cdot z_2$, $z_1^* = 3 \cdot 1 - 4 \cdot i$, and $\lvert z_1 \rvert$. 
+
+Now consider this: complex numbers can also be represented in terms of real valued $2 \times 2$ matrices. To see this, consider the two ``basis'' matrices
+\begin{align*}
+\mat{1} & = 
+\begin{bmatrix} 
++1 &  0 \\ 
+ 0 & +1 
+\end{bmatrix} \\[1ex]
+\mat{i} & = 
+\begin{bmatrix} 
+ 0 & -1 \\ 
++1 &  0 
+\end{bmatrix} 
+\intertext{and let}
+\mat{z}_1 & = 3 \, \mat{1} + 4 \, \mat{i} \\
+\mat{z}_2 & = 2 \, \mat{1} - 2 \, \mat{i}
+\end{align*}
+
+Here is your \emph{second sub-task}: implement these objects in Numpy and compute $\mat{z}_1 + \mat{z}_2$, $\mat{z}_1 \cdot \mat{z}_2$, $\trn{\mat{z}_1}$, and $\sqrt{\det{\mat{z}_1}}$ (where $+$ and $\cdot$ denote matrix addition and multiplication).
+%%%%%
+%%%%%
+%%%%% enter your code into the following environment
+%%%%%
+%%%%%
+\begin{python}
+# paste your code here
+
+\end{python}
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\vspace{2cm}
+
+Print the matrices $\mat{z}_1$ and $\mat{z}_2$ as well as the results of your computations. What do you observe ? How do your results relate to the results you got in the first sub-task ?
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+enter your discussion here \ldots
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+\newpage
+
+
+
+
+
+\subsection*{bonus [10 points]}
+Just as the complex numbers $z \in \mathbb{C}$, the quaternions $q \in \mathbb{H}$ can be represented in terms of matrices, too. Here, we actually have to choices: 
+
+\begin{enumerate}
+\item either, we may introduce certain $4 \times 4$ real valued matrices $\mat{1}, \mat{i}, \mat{j}, \mat{k}$ which represent the unit quaternions $1, i, j, k$ so that a quaternion $\mat{q} = a \, \mat{1} + b \, \mat{i} + c \, \mat{j} + d \, \mat{k}$ is a matrix $\mat{q} \in \mathbb{R}^{4 \times 4}$. Do you have an idea how the ``basis'' matrices $\mat{1}$, $\mat{i}$, $\mat{j}$, and $\mat{k}$ could look like? If so, implement them in Numpy and compute the product $\mat{i} \mat{j} \mat{k}$.
+%%%%%
+%%%%%
+%%%%% enter your code into the following environment
+%%%%%
+%%%%%
+\begin{python}
+# paste your code here
+
+\end{python}
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\item or, we may introduce certain $2 \times 2$ complex valued matrices $\mat{1}, \mat{i}, \mat{j}, \mat{k}$ which represent the unit quaternions $1, i, j, k$ so that a quaternion $\mat{q} = a \, \mat{1} + b \, \mat{i} + c \, \mat{j} + d \, \mat{k}$ is a matrix $\mat{q} \in \mathbb{C}^{2 \times 2}$. Do you have an idea how the complex valued ``basis'' matrices $\mat{1}$, $\mat{i}$, $\mat{j}$, and $\mat{k}$ could look like? If so, implement them in Numpy and compute the product $\mat{i} \mat{j} \mat{k}$.
+%%%%%
+%%%%%
+%%%%% enter your code into the following environment
+%%%%%
+%%%%%
+\begin{python}
+# paste your code here
+
+\end{python}
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\end{enumerate}
+Print your results and discuss what you observe.
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your discussion here
+%%%%%
+%%%%%
+enter your discussion here \ldots
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+
