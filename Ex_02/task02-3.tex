@@ -45,9 +45,30 @@ Here is your \emph{second sub-task}: implement these objects in Numpy and comput
 %%%%%
 %%%%%
 \begin{python}
-# paste your code here
+# subtask_1
+z1 = complex(3, +4)
+z2 = complex(2, -2)
+print("Z1+Z2 = ", z1 + z2)
+print("Z1.Z2 = ", z1 * z2)
+print("Z1* = ", z1.conjugate())
+print("|Z1| = ", abs(z1))
+
+# subtask_2
+identity = np.identity(2)
+i = np.array([[0, -1], [1, 0]])
+z1 = np.array(3 * identity + 4 * i)
+z2 = np.array(2 * identity - 2 * i)
+print("Z1+Z2:")
+print(z1 + z2, end='\n\n')
+print("Z1*Z2:")
+print(z1 @ z2, end='\n\n')
+print("Transpose(Z1):")
+print(z1.transpose(), end='\n\n')
+print("Sqrt(Det(Z1)):")
+print(np.sqrt(np.linalg.det(z1)), end='\n\n')
 
 \end{python}
+
 %%%%%
 %%%%%
 %%%%%
@@ -57,12 +78,60 @@ Here is your \emph{second sub-task}: implement these objects in Numpy and comput
 
 Print the matrices $\mat{z}_1$ and $\mat{z}_2$ as well as the results of your computations. What do you observe ? How do your results relate to the results you got in the first sub-task ?
 \color{blue} \\[1ex]
+
+\begin{python}
+print("Z1:")
+print(z1, end='\n\n')
+print("Z2:")
+print(z2)
+\end{python}
+\mat{z1} & = 
+\begin{bmatrix} 
+3 & -4 \\ 
+4 &  3 
+\end{bmatrix} \\ \\
+\mat{z2} & = 
+\begin{bmatrix} 
+ 2 & 2 \\ 
+-2 & 2 
+\end{bmatrix} \\
+
+$z_1 + z_2$ =  5 + 2j 	\\
+$z_1 \cdot z_2$ =  14 + 2j	\\	
+$z_1^*$   =  3 - 4j	\\
+$\lvert z_1 \rvert$ =  5.0	\\ \\	
+\mat{$\mat{z}_1 + \mat{z}_2$} & = 
+\begin{bmatrix} 
+5. & -2. \\ 
+2. &  5.
+\end{bmatrix} \\ \\
+
+\mat{$\mat{z}_1 \cdot \mat{z}_2$} & = 
+\begin{bmatrix} 
+14. & -2. \\ 
+2. &  14.
+\end{bmatrix} \\ \\
+
+\mat{$\trn{\mat{z}_1}$} & = 
+\begin{bmatrix} 
+3. & 4. \\ 
+-4. &  3.
+\end{bmatrix} \\ \\
+
+$\sqrt{\det{\mat{z}_1}}$ = 5.000000000000001 \\ \\
 %%%%%
 %%%%%
 %%%%% enter your discussion here
 %%%%%
 %%%%%
-enter your discussion here \ldots
+We observe that we can represent a complex number a+bi as matrix $$\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$$ and then:
+\begin{description}
+  \item[$\bullet$] addition of complex numbers corresponds to their matrix addition
+  \item[$\bullet$] multiplication of complex numbers corresponds to their matrix multiplication
+  \item[$\bullet$] complex conjugate of a complex number corresponds to transpose of its matrix
+  \item[$\bullet$] absolute value of a complex number corresponds to square root of the determinant of its matrix
+\end{description}
+
 %%%%%
 %%%%%
 %%%%%
@@ -86,8 +155,13 @@ Just as the complex numbers $z \in \mathbb{C}$, the quaternions $q \in \mathbb{H
 %%%%%
 %%%%%
 \begin{python}
-# paste your code here
-
+# Bonus-1
+identity = np.identity(4)
+i = np.array([[0, -1, 0, 0], [1, 0, 0, 0], [0, 0, 0, -1], [0, 0, 1, 0]])
+j = np.array([[0, 0, -1, 0], [0, 0, 0, 1], [1, 0, 0, 0], [0, -1, 0, 0]])
+k = np.array([[0, 0, 0, -1], [0, 0, -1, 0], [0, 1, 0, 0], [1, 0, 0, 0]])
+print("i*j*k:")
+print(i @ j @ k)
 \end{python}
 %%%%%
 %%%%%
@@ -101,8 +175,13 @@ Just as the complex numbers $z \in \mathbb{C}$, the quaternions $q \in \mathbb{H
 %%%%%
 %%%%%
 \begin{python}
-# paste your code here
-
+# Bonus-2
+identity = np.identity(2)
+i = np.array([[complex(0, 1), 0], [0, complex(0, -1)]])
+j = np.array([[0, 1], [-1, 0]])
+k = np.array([[0, complex(0, 1)], [complex(0, 1), 0]])
+print("i*j*k:")
+print(i @ j @ k)
 \end{python}
 %%%%%
 %%%%%
@@ -112,12 +191,25 @@ Just as the complex numbers $z \in \mathbb{C}$, the quaternions $q \in \mathbb{H
 \end{enumerate}
 Print your results and discuss what you observe.
 \color{blue} \\[1ex]
+For 1: \\
+\mat{$\mat{i} \mat{j} \mat{k}$} & = 
+\begin{bmatrix} 
+-1 & 0 & 0 & 0 \\ 
+ 0 & -1 & 0 & 0 \\ 
+0 & 0 & -1 & 0 \\ 
+0 & 0 & 0 & -1 \\ 
+\end{bmatrix} \\ \\ \\
+For 2: \\
+\mat{$\mat{i} \mat{j} \mat{k}$} & = 
+\begin{bmatrix} 
+-1.+0.j &  0.+0.j \\ 
+ 0.+0.j & -1.+0.j
+\end{bmatrix} \\ \\
 %%%%%
 %%%%%
 %%%%% enter your discussion here
 %%%%%
 %%%%%
-enter your discussion here \ldots
 %%%%%
 %%%%%
 %%%%%
