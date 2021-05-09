@@ -68,6 +68,7 @@ print("Sqrt(Det(Z1)):")
 print(np.sqrt(np.linalg.det(z1)), end='\n\n')
 
 \end{python}
+
 %%%%%
 %%%%%
 %%%%%
@@ -84,7 +85,40 @@ print(z1, end='\n\n')
 print("Z2:")
 print(z2)
 \end{python}
+\mat{z1} & = 
+\begin{bmatrix} 
+3 & -4 \\ 
+4 &  3 
+\end{bmatrix} \\ \\
+\mat{z2} & = 
+\begin{bmatrix} 
+ 2 & 2 \\ 
+-2 & 2 
+\end{bmatrix} \\
 
+$z_1 + z_2$ =  5 + 2j 	\\
+$z_1 \cdot z_2$ =  14 + 2j	\\	
+$z_1^*$   =  3 - 4j	\\
+$\lvert z_1 \rvert$ =  5.0	\\ \\	
+\mat{$\mat{z}_1 + \mat{z}_2$} & = 
+\begin{bmatrix} 
+5. & -2. \\ 
+2. &  5.
+\end{bmatrix} \\ \\
+
+\mat{$\mat{z}_1 \cdot \mat{z}_2$} & = 
+\begin{bmatrix} 
+14. & -2. \\ 
+2. &  14.
+\end{bmatrix} \\ \\
+
+\mat{$\trn{\mat{z}_1}$} & = 
+\begin{bmatrix} 
+3. & 4. \\ 
+-4. &  3.
+\end{bmatrix} \\ \\
+
+$\sqrt{\det{\mat{z}_1}}$ = 5.000000000000001 \\ \\
 %%%%%
 %%%%%
 %%%%% enter your discussion here
@@ -157,12 +191,25 @@ print(i @ j @ k)
 \end{enumerate}
 Print your results and discuss what you observe.
 \color{blue} \\[1ex]
+For 1: \\
+\mat{$\mat{i} \mat{j} \mat{k}$} & = 
+\begin{bmatrix} 
+-1 & 0 & 0 & 0 \\ 
+ 0 & -1 & 0 & 0 \\ 
+0 & 0 & -1 & 0 \\ 
+0 & 0 & 0 & -1 \\ 
+\end{bmatrix} \\ \\ \\
+For 2: \\
+\mat{$\mat{i} \mat{j} \mat{k}$} & = 
+\begin{bmatrix} 
+-1.+0.j &  0.+0.j \\ 
+ 0.+0.j & -1.+0.j
+\end{bmatrix} \\ \\
 %%%%%
 %%%%%
 %%%%% enter your discussion here
 %%%%%
 %%%%%
-enter your discussion here \ldots
 %%%%%
 %%%%%
 %%%%%
