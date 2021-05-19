@@ -1,0 +1,60 @@
+
+\subsection*{task 3.1 [5 points] \\[1ex] whitened data is of unit covariance}
+
+In lecture 08, we briefly looked at data pre-processing techniques such as \emph{data whitening}. Recall that, if we are given an $m \times n$ data matrix of real valued vectors
+\begin{equation*}
+\mat{X} = 
+\begin{bmatrix}
+\vdash    & \vdash    &        & \vdash \\
+\vec{x}_1 & \vec{x}_2 & \cdots & \vec{x}_n \\
+\vdash    & \vdash    &        & \vdash \\
+\end{bmatrix}
+\end{equation*}
+then the process of whitening these data consists of the following three steps
+\begin{enumerate}
+\item compute the transformation
+  \begin{equation*}
+  \mat{Y} = \mat{X} \, \bigl( \mat{I} - \tfrac{1}{n} \, \opt{\vec{1}}{\vec{1}} \bigr)
+  \end{equation*}
+\item determine the spectral decomposition
+  \begin{equation*}
+  \tfrac{1}{n} \, \opt{\mat{Y}}{\mat{Y}} = \mat{U} \mat{\Lambda} \, \trn{\mat{U}}
+  \end{equation*}
+\item  compute the transformation
+  \begin{equation*}
+  \mat{Z} = \mat{U} \, \mat{\Lambda}^{-\frac{1}{2}} \trn{\mat{U}} \mat{Y}
+  \end{equation*}
+\end{enumerate}
+Also recall that we claimed the covariance matrix of the data in $\mat{Z}$ to be the identity matrix. Your task is now to prove this claim, i.e. prove that
+\begin{equation*}
+\frac{1}{n} \, \opt{\mat{Z}}{\mat{Z}} = \mat{I}
+\end{equation*}
+(Remember that $\mat{U}$ is orthogonal and $\mat{\Lambda}$ is diagonal \ldots)
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your proof here
+%%%%%
+%%%%%
+\begin{align*}
+\opt{\mat{Z}}{\mat{Z}} 
+&= (\mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \mat{Y}) (\mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \mat{Y})^T \\
+&= \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T (\mat{Y} \mat{Y}^T ) \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \\
+&= \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T (n \cdot \frac1n \mat{Y} \mat{Y}^T ) \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \\
+&= \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T (n \cdot \mat{U} \mat{\Lambda} \mat{U}^T ) \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \\
+&= n \cdot \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \mat{U} \mat{\Lambda} \mat{U}^T \mat{U} \mat{\Lambda}^{-\frac12} \mat{U}^T \\
+&= n \cdot \mat{U} \mat{\Lambda}^{-\frac12} \mat{\Lambda} \mat{\Lambda}^{-\frac12} \mat{U}^T \\
+&= n \cdot \mat{U} \mat{U}^T \\
+&= n \cdot \mat{I}
+\end{align*}
+
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+
+
+
+

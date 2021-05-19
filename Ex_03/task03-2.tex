@@ -1,0 +1,33 @@
+
+\subsection*{task 3.2 [5 points] \\[1ex] more on idempotent matrices}
+
+In lecture 07, we already proved that, if $\vec{u} \in \mathbb{R}^m$ is a unit vector, then the outer product matrix $\mat{P} = \opt{\vec{u}}{\vec{u}}$ is idempotent. Your task is now to establish a more general result.
+
+Prove that, for any $\vec{u} \neq \vec{0} \in \mathbb{C}^m$, the matrix
+\begin{equation*}
+\mat{P} = \frac{\vec{u} \vec{u}^\dagger}{\vec{u}^\dagger \vec{u}}
+\end{equation*}
+is idempotent.
+\color{blue} \\[1ex]
+%%%%%
+%%%%%
+%%%%% enter your proof here
+%%%%%
+%%%%%
+\begin{align*}
+\mat{P}^2
+&= \left( \frac{\vec{u} \vec{u}^\dagger}{\vec{u}^\dagger \vec{u}} \right) \left( \frac{\vec{u} \vec{u}^\dagger}{\vec{u}^\dagger \vec{u}} \right) 
+= \frac{\vec{u} (\vec{u}^\dagger \vec{u}) \vec{u}^\dagger}{(\vec{u}^\dagger \vec{u})^2}
+= \frac{\vec{u} \vec{u}^\dagger}{\vec{u}^\dagger \vec{u}} = \mat{P}
+\end{align*}
+
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+\color{black}
+
+
+
+
